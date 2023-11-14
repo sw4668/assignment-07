@@ -14,6 +14,7 @@ app.listen(port, () => {
 
 // our custom middleware function
 function workingHours(req, res, next) {
+
   // get the current time
   const currentTime = new Date();
   // get the hour
@@ -30,14 +31,18 @@ function workingHours(req, res, next) {
     currentHour >= normalBusinessHours.open &&
     currentHour <= normalBusinessHours.close
   ) {
+
     // if so, point the request to our static files
     console.log('Open!');
     req.url = 'chauncey-gardiner-resume.pdf';
     next();
+
   } else {
+    
     // otherwise, return the denial
     console.log('Closed 🔒');
     req.url = 'denied.html';
     next();
+
   }
 }
