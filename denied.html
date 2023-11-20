@@ -9,12 +9,57 @@
     font-family: Arial, sans-serif;
     text-align: center;
     padding-top: 50px;
+    position: relative;
   }
+
+  .random-image {
+  position: absolute;
+}
+
+.random-image:nth-child(1) {
+  top: 20%;
+  left: 15%;
+}
+
+.random-image:nth-child(2) {
+  top: 50%;
+  left: 60%;
+}
+
+.random-image:nth-child(3) {
+  top: 80%;
+  left: 30%;
+}
+
+h1, p {
+  position: relative;
+  z-index: 10;
+}
+
 </style>
 </head>
 <body>
-  <h1>We're currently closed.</h1>
-  <p>Please visit us during our normal business hours:</p>
-  <p>Monday to Friday, 9 AM to 5 PM.</p>
+    <img src="flower.png" class="random-image">
+    <img src="flower.png" class="random-image">
+    <img src="flower.png" class="random-image">
+    <img src="flower.png" class="random-image">
+  <h1>Not Today Capitalism.</h1>
+  <p>currently out living my life, please come back</p>
+  <p>2 AM to 3 AM on Sunday, Tuesday, or Wednesday.</p>
+
+  <script>
+    window.onload = function() {
+      document.querySelectorAll('.random-image').forEach(function(img) {
+        // Random size between 10% to 30% of the viewport width
+        let size = Math.random() * 20 + 10 + 'vw'; 
+        img.style.width = size;
+        img.style.height = 'auto'; // Maintain aspect ratio
+  
+        // Random position
+        img.style.top = Math.random() * (100 - parseInt(size)) + '%';
+        img.style.left = Math.random() * (100 - parseInt(size)) + '%';
+      });
+    };
+  </script>
 </body>
 </html>
