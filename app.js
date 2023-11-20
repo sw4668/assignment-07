@@ -20,16 +20,28 @@ function workingHours(req, res, next) {
   // get the hour
   const currentHour = currentTime.getHours();
 
-  const normalBusinessHours = {
+  // hour
+  const openHour = 2;
+  const closeHour = 3;
+
+  // day 
+  const currentDay = currentTime.getDay(); 
+
+  //const normalBusinessHours = {
     // 24 hour time
-    open: 9,
-    close: 17,
-  };
+   // open: 2,
+   // close: 3,
+ // };
+
+  const openDays = [0, 2, 3]; // Sunday, Tuesday, Wednesday
+  
+  const isOpenDay = openDays.includes(currentDay);
 
   // check if within normal business hours
   if (
-    currentHour >= normalBusinessHours.open &&
-    currentHour <= normalBusinessHours.close
+    //currentHour >= normalBusinessHours.open &&
+    //currentHour <= normalBusinessHours.close
+    isOpenDay && currentHour >= openHour && currentHour < closeHour
   ) {
 
     // if so, point the request to our static files
